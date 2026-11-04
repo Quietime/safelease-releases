@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "packageName": "sg.safelease.presentation",
+  "versionCode": 16200,
+  "versionName": "1.6.2",
+  "minSdk": 28,
+  "downloadUrl": "https://github.com/Quietime/safelease-releases/releases/download/v1.6.2/SafeLease-SG-1.6.2.apk",
+  "size": 7072958,
+  "sha256": "4d20392b5cc4f0802bc85ce602880b99c8856bbfe893244a78dd4e7c3ef2f05f",
+  "releaseNotes": {
+    "en": "Deduction Check wording now matches the evidence: each point shows Stated or Not stated, and the fourth point asks for the loss and its basis. Sample deductions link the mattress item to the move-in inventory automatically. No outcome is predicted.",
+    "zh": "扣款核对的措辞统一为“已说明 / 未说明”，第四点改为“损失及依据”。示例扣款会自动把床垫一项关联到入住清单。不预测任何结果。"
+  }
+}
