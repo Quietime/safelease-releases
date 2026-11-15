@@ -1,0 +1,15 @@
+{
+  "versionName": "1.7.0",
+  "versionCode": 17000,
+  "base": "app/SafeLease-SG-1.6.2.apk",
+  "baseSha256": "4d20392b5cc4f0802bc85ce602880b99c8856bbfe893244a78dd4e7c3ef2f05f",
+  "baseGitCommit": "de324208a616996d2766bf67856a6538547fa232",
+  "baseUrl": "https://github.com/Quietime/safelease-releases/releases/download/v1.6.2/SafeLease-SG-1.6.2.apk",
+  "baseVersionName": "1.6.2",
+  "baseVersionCode": 16200,
+  "certificateSha256": "772db9f5b824692fc43c7b23cacb1c3f79002c57bed41160c938849b84c1b16a",
+  "releaseNotes": {
+    "en": "Each lease now opens with one next step and a five-step progress row, worked out from your records. Lease members sit right after the move-in record, so inviting the landlord follows recording. On phones the main sections move to a bottom bar, one tap away. Returning users see Create a lease folded away, and new users see the guide first. Calmer cards, buttons and header. Records, photos and decisions are unchanged.",
+    "zh": "每份租约顶部新增“下一步”与五步进度，均按你的记录计算。租约成员移到入住记录之后，记录完即可邀请房东。手机端主导航改为底部栏，一次点击即可切换。已有租约时“创建租约”自动折叠，新用户先看到新手引导。卡片、按钮与顶部栏更简洁。记录、照片与决定均不受影响。"
+  }
+}

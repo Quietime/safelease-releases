@@ -9,6 +9,8 @@ This repository is the public release channel for SafeLease SG. GitHub Pages ser
 | `app/` | Signed Android APK, `update.json` manifest and `SHA256SUMS.txt` |
 | `tools/verify_release.py` | Checks that every release file agrees with `app/update.json` |
 | `.github/workflows/release.yml` | Publishes the GitHub Release on every push to `main` |
+| `android/` | Android 1.7.0 build from the signed base APK plus changed assets, see `android/README.md` |
+| `.github/workflows/android.yml` | Builds and tests the APK, and signs it when the release keystore is stored as secrets |
 | `tests/` | Unit tests for the web app logic and an end-to-end browser walk |
 
 ## How the Android update works
@@ -16,6 +18,9 @@ This repository is the public release channel for SafeLease SG. GitHub Pages ser
 The installed app reads `releases/latest/download/update.json`. A version only reaches phones after it is published as the latest GitHub Release with three assets, the APK, `update.json` and `SHA256SUMS.txt`. App updates use the same package and signing certificate, and Android asks for installation confirmation.
 
 ## Publishing a new APK
+
+For 1.7.0 and later, `android/build_apk.py` builds, signs and promotes the APK. See `android/README.md`. The manual steps below still apply to an APK built elsewhere.
+
 
 1. Put the signed `SafeLease-SG-<version>.apk` in `app/` and remove the old one.
 2. Update `app/update.json` (versionCode, versionName, downloadUrl, size, sha256, release notes) and `app/SHA256SUMS.txt`.
