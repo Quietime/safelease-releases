@@ -6,6 +6,9 @@ name: Build Android APK
 #   SAFELEASE_STORE_PASSWORD
 #   SAFELEASE_KEY_PASSWORD
 # Without the secrets it still builds and tests, and uploads the unsigned APK.
+# On a branch other than main, a signed build is also committed to app/ (promoted) when
+# android/version.json is newer than the published app/update.json, or when run by hand
+# with "promote" ticked. Merging that branch then publishes it through release.yml.
 on:
   push:
     paths:
@@ -61,6 +64,21 @@ jobs:
         if: env.KEYSTORE_B64 == ''
         run: echo "::notice::No signing secrets are set, so only the unsigned APK was built. Sign it with the SafeLease release keystore before publishing."
 
+      - name: Decide whether to promote
+        id: want
+        run: |
+          built=$(jq -r .versionCode android/version.json)
+          published=$(jq -r .versionCode app/update.json)
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            want="${{ inputs.promote }}"
+          elif [ "$built" -gt "$published" ]; then
+            want=true
+          else
+            want=false
+          fi
+          echo "built $built, published $published, promote $want"
+          echo "want=$want" >> "$GITHUB_OUTPUT"
+
       - name: Upload APK and screenshots
         uses: actions/upload-artifact@v4
         with:
@@ -71,7 +89,7 @@ jobs:
           if-no-files-found: error
 
       - name: Promote the signed APK on this branch
-        if: inputs.promote && steps.sign.outcome == 'success' && github.ref != 'refs/heads/main'
+        if: steps.want.outputs.want == 'true' && steps.sign.outcome == 'success' && github.ref != 'refs/heads/main'
         run: |
           version=$(jq -r .versionName android/version.json)
           python3 android/build_apk.py promote "dist/SafeLease-SG-$version.apk"

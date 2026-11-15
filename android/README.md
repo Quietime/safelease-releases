@@ -20,7 +20,7 @@ An update only installs over the existing app when it carries the same certifica
 - `SAFELEASE_STORE_PASSWORD`
 - `SAFELEASE_KEY_PASSWORD`
 
-Then run the "Build Android APK" workflow on this branch with **promote** ticked. It signs, checks the certificate, commits the APK, `update.json`, `SHA256SUMS.txt` and the download page to the branch. Merging the PR publishes v1.7.0 through the release workflow.
+The next push to a branch other than main then signs the build, checks the certificate and commits the APK, `update.json`, `SHA256SUMS.txt` and the download page to that branch, as long as `version.json` is newer than the published `app/update.json`. You can also run the "Build Android APK" workflow by hand with **promote** ticked. Merging the PR publishes v1.7.0 through the release workflow.
 
 **Option B, sign on your own computer.** You need Python 3 and Android SDK build-tools (for `zipalign` and `apksigner`).
 
