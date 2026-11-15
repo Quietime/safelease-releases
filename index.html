@@ -2,30 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SafeLease SG</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#C8102E">
+<meta name="description" content="SafeLease SG helps international students in Singapore check a listing before paying, record the room at move-in and question every deposit deduction.">
+<title>SafeLease SG · Download</title>
 <link rel="icon" href="icon.svg">
 <style>
-:root{--red:#D4143A;--red-d:#B00C27;--ink:#1C2230;--muted:#5A6170;--line:#E1E4EA;--bg:#F3F5F8;--navy:#1F3554}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px}
-main{width:100%;max-width:560px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:36px 28px;text-align:center}
-img{width:56px;height:56px}h1{margin:12px 0 6px;font-size:30px;color:var(--navy)}
-.tag{margin:0 0 28px;color:var(--muted);line-height:1.5}
-a.btn{display:block;text-decoration:none;border-radius:14px;padding:18px 20px;margin:0 0 14px;font-weight:700;font-size:18px}
-a.web{background:var(--red);color:#fff}a.web:hover{background:var(--red-d)}
-a.app{background:#fff;color:var(--navy);border:2px solid var(--navy)}a.app:hover{background:#EAEFF5}
-a.btn span{display:block;font-weight:400;font-size:13px;margin-top:4px;opacity:.85}
-.note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:20px;word-break:break-all}
+:root{--red:#C8102E;--red-d:#A50D26;--tint:#FEF2F3;--pink:#FBDDE1;--ink:#16181D;--ink2:#3A3F4A;--muted:#626873;--line:#E8E9ED;--bg:#F6F7F9;--surface:#fff;--ok:#167A3E;--okbg:#E9F6EE;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--red:#E5304B;--red-d:#C8102E;--tint:rgba(229,48,75,.14);--pink:#4A202B;--ink:#F2F2F4;--ink2:#D6D8DD;--muted:#B4B8C0;--line:#2E3037;--bg:#0E0F11;--surface:#17181C;--ok:#5BD18B;--okbg:rgba(34,197,94,.14)}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:var(--red)}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{max-width:880px;margin:0 auto;padding:40px 20px 56px}
+header{display:flex;align-items:center;gap:16px}
+header img{width:56px;height:56px;border-radius:16px;box-shadow:0 10px 24px -10px rgba(200,16,46,.7)}
+header h1{margin:0;font-size:30px;letter-spacing:-.025em;line-height:1.15}
+header p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.tagline{margin:28px 0 30px;font-size:20px;line-height:1.5;letter-spacing:-.01em;font-weight:650;max-width:640px}
+.tagline span{display:block;font-size:16px;font-weight:500;color:var(--muted);margin-top:4px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 2px rgba(16,24,40,.04),0 1px 3px rgba(16,24,40,.05)}
+.card.feature{background:radial-gradient(120% 140% at 100% 0%,#E2254A 0%,var(--red) 45%,#A50D26 100%);color:#fff;border:0;box-shadow:0 18px 40px -22px rgba(165,13,38,.8)}
+.eyebrow{font-size:11px;letter-spacing:.12em;font-weight:700;text-transform:uppercase;color:var(--muted)}
+.feature .eyebrow{color:rgba(255,255,255,.82)}
+.card h2{margin:0;font-size:22px;letter-spacing:-.015em;line-height:1.3}
+.card p{margin:0;font-size:14px;color:var(--muted)}
+.feature p{color:rgba(255,255,255,.88)}
+.meta{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;font-weight:650;border-radius:20px;padding:4px 10px;background:var(--tint);color:var(--red)}
+.feature .chip{background:rgba(255,255,255,.16);color:#fff}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;border-radius:15px;padding:12px 18px;font-weight:700;font-size:16px;text-decoration:none;margin-top:auto;transition:background-color .18s,transform .09s}
+.btn:active{transform:scale(.98)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.light{background:#fff;color:#B00C27}
+.btn.light:hover{background:#FFF0F2}
+.btn.red{background:var(--red);color:#fff;box-shadow:0 8px 18px -8px rgba(200,16,46,.55)}
+.btn.red:hover{background:var(--red-d)}
+.btn span{display:block;font-weight:500;font-size:12px;opacity:.85}
+.ticks{list-style:none;margin:0;padding:14px 0 0;border-top:1px solid rgba(255,255,255,.2);display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:rgba(255,255,255,.92)}
+.ticks li{display:flex;gap:10px;align-items:flex-start}
+.ticks li:before{content:"";flex:none;width:16px;height:16px;margin-top:2px;border-radius:50%;background:rgba(255,255,255,.95) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23C8102E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.notes{border-top:1px solid var(--line);padding-top:14px;font-size:13.5px;color:var(--ink2)}
+.notes p{color:var(--ink2);font-size:13.5px;margin-top:6px}
+h3{margin:40px 0 14px;font-size:18px;letter-spacing:-.01em}
+ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;counter-reset:s}
+ol.steps li{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;font-size:14px;color:var(--ink2);counter-increment:s}
+ol.steps li:before{content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--surface);font-size:13px;font-weight:750;margin-bottom:10px}
+ol.steps strong{display:block;color:var(--ink);margin-bottom:2px}
+ol.steps span{display:block;color:var(--muted);font-size:13px;margin-top:4px}
+.verify{margin-top:12px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.verify code{font:12.5px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink2);overflow-wrap:anywhere;flex:1;min-width:220px}
+.verify button{border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:10px;padding:8px 12px;font:inherit;font-size:13px;font-weight:650;cursor:pointer}
+.verify button:hover{border-color:var(--red);color:var(--red)}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:14px}
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);line-height:1.7}
+@media (max-width:720px){.grid,ol.steps{grid-template-columns:1fr}.wrap{padding:28px 16px 44px}.tagline{font-size:18px;margin:22px 0 24px}header h1{font-size:26px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<main>
-<img src="icon.svg" alt="">
-<h1>SafeLease SG</h1>
-<p class="tag">Check before you pay. Record at move-in. Question every deduction.<br>付款前核查，入住时记录，质询每一笔扣款。</p>
-<a class="btn web" href="web/">Open the web app · 打开网页版<span>Version 1.2.0 · runs in the browser · 浏览器直接使用</span></a>
-<a class="btn app" href="app/SafeLease-SG-1.6.2.apk" download>Download the Android app · 下载安卓 App<span>Version 1.6.2 · APK, 6.7 MB · 安装时需允许"未知来源"</span></a>
-<p class="note">Prototype for MNGT2008 Assessment 2, Group B14. Sample data is labelled as demo data.<br>APK SHA-256: 4d20392b5cc4f0802bc85ce602880b99c8856bbfe893244a78dd4e7c3ef2f05f</p>
-</main>
+<div class="wrap">
+<header>
+  <img src="icon.svg" alt="">
+  <div><h1>SafeLease SG</h1><p>For international students renting in Singapore · 为在新加坡租房的国际学生而设</p></div>
+</header>
+
+<p class="tagline">Check before you pay. Record at move-in. Question every deduction.<span>付款前核查，入住时记录，质询每一笔扣款。</span></p>
+
+<div class="grid">
+  <section class="card feature" aria-labelledby="web-title">
+    <span class="eyebrow">Web app · 网页版</span>
+    <h2 id="web-title">Open in your browser<br>浏览器直接使用</h2>
+    <p>Nothing to install. Works offline after the first visit and keeps your records on this device.<br>无需安装。首次打开后可离线使用，记录只保存在本设备。</p>
+    <div class="meta"><span class="chip">Version 1.3.0</span><span class="chip">English · 中文</span><span class="chip">Phone and desktop</span></div>
+    <ul class="ticks">
+      <li>Check a listing and who you pay · 核查房源与收款人</li>
+      <li>Room-by-room move-in photos with fingerprints · 逐间拍摄入住照片并生成指纹</li>
+      <li>Deposit steps, deduction check and letters · 押金步骤、扣款核对与信件</li>
+      <li>Backup and restore your records · 备份与恢复记录</li>
+    </ul>
+    <a class="btn light" href="web/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Open the web app · 打开网页版</a>
+  </section>
+
+  <section class="card" aria-labelledby="apk-title">
+    <span class="eyebrow">Android app · 安卓 App</span>
+    <h2 id="apk-title">Download the APK<br>下载安卓安装包</h2>
+    <div class="meta"><span class="chip">Version 1.6.2</span><span class="chip">6.7 MB</span><span class="chip">Android 9+</span></div>
+    <div class="notes">
+      <strong>What’s new · 更新内容</strong>
+      <!-- apk-notes -->
+      <p>Deduction Check wording now matches the evidence. Each point shows Stated or Not stated, and the fourth point asks for the loss and its basis. Sample deductions link the mattress item to the move-in inventory automatically. No outcome is predicted.</p>
+      <p>扣款核对的措辞统一为“已说明 / 未说明”，第四点改为“损失及依据”。示例扣款会自动把床垫一项关联到入住清单。不预测任何结果。</p>
+      <!-- /apk-notes -->
+    </div>
+    <a class="btn red" href="app/SafeLease-SG-1.6.2.apk" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div>Download the APK · 下载安装包<span>SafeLease-SG-1.6.2.apk · 6.7 MB</span></div></a>
+  </section>
+</div>
+
+<h3>Installing on Android · 安卓安装步骤</h3>
+<ol class="steps">
+  <li><strong>Download the APK</strong>Open the file when the download finishes.<span>下载完成后打开文件。</span></li>
+  <li><strong>Allow this install</strong>Android asks once to allow apps from your browser or file manager.<span>系统会询问是否允许来自浏览器或文件管理器的安装，允许一次即可。</span></li>
+  <li><strong>Install over the old app</strong>Updates keep your records. Installed apps also find new versions on their own.<span>覆盖安装可保留记录。已安装的 App 也会自动检查新版本。</span></li>
+</ol>
+
+<div class="verify">
+  <code id="sha">APK SHA-256: 4d20392b5cc4f0802bc85ce602880b99c8856bbfe893244a78dd4e7c3ef2f05f</code>
+  <button type="button" id="copy-sha">Copy · 复制</button>
+</div>
+<div class="links">
+  <a href="https://github.com/Quietime/safelease-releases/releases">All releases · 历史版本</a>
+  <a href="app/update.json">Update manifest · 更新清单</a>
+  <a href="app/SHA256SUMS.txt">SHA256SUMS.txt</a>
+</div>
+
+<footer>
+  Prototype for MNGT2008 Assessment 2, Group B14. Sample data is labelled as demo data. General information, not legal advice. SafeLease never holds or moves money.<br>
+  MNGT2008 第二次作业 B14 组原型。示例数据均已标注。一般信息，不构成法律意见。SafeLease 从不持有或转移资金。
+</footer>
+</div>
+<script>
+document.getElementById('copy-sha').addEventListener('click', async e => {
+  const text = '4d20392b5cc4f0802bc85ce602880b99c8856bbfe893244a78dd4e7c3ef2f05f';
+  try { await navigator.clipboard.writeText(text); e.target.textContent = 'Copied · 已复制'; }
+  catch { const r = document.createRange(); r.selectNodeContents(document.getElementById('sha')); getSelection().removeAllRanges(); getSelection().addRange(r); }
+  setTimeout(() => { e.target.textContent = 'Copy · 复制'; }, 2000);
+});
+</script>
 </body>
 </html>
