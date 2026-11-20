@@ -1,0 +1,17 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'sg.safelease.app'
+    compileSdk 36
+    defaultConfig { applicationId 'sg.safelease.presentation'; minSdk 28; targetSdk 36; versionCode project.hasProperty('qaVersionCode') ? project.property('qaVersionCode').toInteger() : 17000; versionName project.hasProperty('qaVersionName') ? project.property('qaVersionName') : '1.7.0'; testInstrumentationRunner 'sg.safelease.app.UpdateChecks' }
+    signingConfigs {
+        release {
+            if (System.getenv('SAFELEASE_STORE_FILE')) {
+                storeFile file(System.getenv('SAFELEASE_STORE_FILE'))
+                storePassword System.getenv('SAFELEASE_STORE_PASSWORD')
+                keyAlias 'safelease'
+                keyPassword System.getenv('SAFELEASE_KEY_PASSWORD')
+            }
+        }
+    }
+    buildTypes { debug { applicationIdSuffix '.qa'; versionNameSuffix '-qa' }; release { minifyEnabled false; debuggable false; signingConfig signingConfigs.release } }
+}

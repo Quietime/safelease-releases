@@ -5,10 +5,10 @@ The Android app is a WebView shell around web assets. Its Java code has not chan
 | Path | What it is |
 | --- | --- |
 | `version.json` | New version, base APK, release certificate and release notes |
-| `assets/` | Full copies of the assets that differ from 1.5.1 (`app.css` is the 1.6.2 file, unchanged). Only files MainActivity already serves can go here |
+| `source/` | Full Gradle project for 1.7.0 (Java, resources, assets, migrations, tests). The keystore is not included |
 | `build_apk.py` | `build`, `sign`, `promote` and `extract` |
 | `qa/` | Browser harness (node:sqlite bridge, same allowlist as MainActivity) and the 1.7.0 acceptance walk |
-| `CHANGELOG-1.7.0.md` | What changed and how it was checked |
+| `source/CHANGELOG-1.7.0.md` | What changed and how it was checked |
 
 ## Signing
 
@@ -34,7 +34,7 @@ python tools/verify_release.py --previous <the 1.6.2 or 1.5.1 APK>
 
 Commit `app/` and `index.html`, then merge.
 
-**Option C, the Gradle project.** Copy the five files in `assets/` over `app/src/main/assets/` of the 1.5.1 source project (they include the 1.6.2 changes), set `versionCode 17000` and `versionName '1.7.0'` in `app/build.gradle`, and run `gradlew.bat :app:assembleRelease` with the usual signing variables.
+**Option C, the Gradle project.** `android/source` is the complete project at 1.7.0. Run `gradlew.bat :app:assembleRelease` there with JDK 17, Android SDK 36 and the usual SAFELEASE_STORE_FILE, SAFELEASE_STORE_PASSWORD and SAFELEASE_KEY_PASSWORD.
 
 ## Testing
 
@@ -47,4 +47,4 @@ The harness runs the real bundled JavaScript and SQLite migrations but fakes the
 
 ## The next version
 
-Edit the files in `assets/`, bump `versionName` (same length, for example 1.7.1) and `versionCode` in `version.json`, and update the release notes. After 1.7.0 is published you may switch `base` to the 1.7.0 APK. Then set `baseSha256`, `baseGitCommit`, `baseUrl`, `baseVersionName` and `baseVersionCode` to match.
+Edit the files in `source/app/src/main/assets/` (the build swaps in every file that differs from the base APK), bump `versionName` (same length, for example 1.7.1) and `versionCode` in `version.json`, and update the release notes. After 1.7.0 is published you may switch `base` to the 1.7.0 APK. Then set `baseSha256`, `baseGitCommit`, `baseUrl`, `baseVersionName` and `baseVersionCode` to match.

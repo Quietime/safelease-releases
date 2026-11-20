@@ -1,0 +1,2 @@
+@media(prefers-color-scheme:dark){.btn:not(.secondary):not(.ghost):not(:disabled){background:#C8102E}.btn.secondary,.link-btn,a,.nav button.active,.section-title button{color:#FF879A}}
+.avatar{min-width:44px;min-height:44px;width:44px;height:44px}.icon-btn{min-width:44px;min-height:44px}.hero .round{width:44px;height:44px;min-width:44px}

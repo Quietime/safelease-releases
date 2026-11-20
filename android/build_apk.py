@@ -31,7 +31,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 DIST = ROOT / "dist"
-OVERLAY = HERE / "assets"
+OVERLAY = HERE / "source" / "app" / "src" / "main" / "assets"  # the Gradle project assets; only files that differ from the base APK are swapped in
 # Files MainActivity serves to the WebView. A file outside this list returns 404 in the app
 # (the 1.5.0 regression), and the list lives in compiled Java, so the overlay may only replace these.
 ALLOWLIST = {"index.html", "app.js", "app.css", "brand.css", "model.js", "Inter.woff2", "icon.svg", "icon-192.png", "icon-512.png",
@@ -71,10 +71,14 @@ def base_apk():
 
 
 def overlay_files():
-    files = sorted(p.name for p in OVERLAY.iterdir() if p.is_file())
+    """Asset files in the source tree whose bytes differ from the base APK."""
+    with zipfile.ZipFile(base_apk()) as z:
+        names = {i.filename for i in z.infolist()}
+        files = sorted(p.name for p in OVERLAY.iterdir() if p.is_file()
+                       and ("assets/" + p.name not in names or z.read("assets/" + p.name) != p.read_bytes()))
     bad = [f for f in files if f not in ALLOWLIST | NATIVE_READ]
     if bad:
-        sys.exit(f"overlay files outside the MainActivity allowlist would 404 in the app: {bad}")
+        sys.exit(f"changed files outside the MainActivity allowlist would 404 in the app: {bad}")
     return files
 
 

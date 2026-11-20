@@ -1,0 +1,422 @@
+{
+  "DEMO Tenant / 演示租客": [
+    "Tenant",
+    "租客"
+  ],
+  "DEMO Landlord / 演示房东": [
+    "Landlord",
+    "房东"
+  ],
+  "DEMO Reviewer / 演示复核员": [
+    "Reviewer",
+    "复核人员"
+  ],
+  "DEMO Unrelated / 无关账户": [
+    "Other account",
+    "其他账户"
+  ],
+  "DEMO / 演示 · ": [
+    "Record",
+    "·"
+  ],
+  "DEMO ILLUSTRATION / 演示插图，非实际相机记录": [
+    "ILLUSTRATION",
+    "插图，非实际相机记录"
+  ],
+  "Demo room / 演示房间": [
+    "room",
+    "房间"
+  ],
+  "DEMO scratch / 演示划痕": [
+    "scratch",
+    "划痕"
+  ],
+  "DEMO baseline / 演示基线": [
+    "baseline",
+    "基线"
+  ],
+  "DEMO independent decision / 演示独立确认": [
+    "independent decision",
+    "独立确认"
+  ],
+  "DEMO · Pre-lease checks / 租约前检查": [
+    "Listing checks",
+    "房源检查"
+  ],
+  "DEMO observation only / 演示自报记录，未核实真实中介或产权": [
+    "observation only",
+    "自报记录，未核实真实中介或产权"
+  ],
+  " · HISTORICAL TEST REPLAY / 历史测试回放": [
+    "· HISTORICAL TEST REPLAY",
+    "历史测试回放"
+  ],
+  "Historical real query of a public NASA image. Not a new query, not a rental verification. / 公共NASA图片历史真实查询回放，并非本次新查询或房源核验。": [
+    "Historical real query of a public NASA image. Not a new query, not a rental verification.",
+    "公共NASA图片历史真实查询回放，并非本次新查询或房源核验。"
+  ],
+  "01 · Start here / 现场操作起点": [
+    "01 · Start here",
+    "现场操作起点"
+  ],
+  "02 · Both confirmed + new supplement / 双方确认与补充": [
+    "02 · Both confirmed + new supplement",
+    "双方确认与补充"
+  ],
+  "DEMO supplement awaiting fresh decisions / 补充版本等待重新确认": [
+    "supplement awaiting fresh decisions",
+    "补充版本等待重新确认"
+  ],
+  "Additional annotation / 新增批注": [
+    "Additional annotation",
+    "新增批注"
+  ],
+  "DEMO partial refund / 演示部分退款": [
+    "partial refund",
+    "部分退款"
+  ],
+  "03 · One-sided after 48h / 48小时后仍为单方": [
+    "03 · One-sided after 48h",
+    "48小时后仍为单方"
+  ],
+  "04 · Dispute and review queue / 异议与人工复核": [
+    "04 · Dispute and review queue",
+    "异议与人工复核"
+  ],
+  "DEMO disagreement: illustration condition needs review / 演示异议，请复核照片批注": [
+    "disagreement: illustration condition needs review",
+    "异议，请复核照片批注"
+  ],
+  "05 · Refused participation / 房东拒绝参与": [
+    "05 · Refused participation",
+    "房东拒绝参与"
+  ],
+  "DEMO refusal / 演示拒绝，不代表双方认可": [
+    "refusal",
+    "拒绝，不代表双方认可"
+  ],
+  "07 · Retention hold / 争议保留": [
+    "07 · Retention hold",
+    "争议保留"
+  ],
+  "06 · Retention due / 到期清理": [
+    "06 · Retention due",
+    "到期清理"
+  ],
+  "DEMO retention hold / 演示争议保留": [
+    "retention hold",
+    "争议保留"
+  ],
+  "Guest": [
+    "Guest",
+    "访客"
+  ],
+  "Demo room": [
+    "Room",
+    "房间"
+  ],
+  "DEMO-NOT-A-REAL-REGISTRATION": [
+    "Example registration",
+    "示例登记编号"
+  ],
+  "Evidence saved / 证据文件已保存": [
+    "Evidence saved.",
+    "证据文件已保存。"
+  ],
+  "Save cancelled / 已取消保存": [
+    "Save cancelled.",
+    "已取消保存。"
+  ],
+  "Save dialog unavailable / 无法打开保存窗口": [
+    "The save dialog could not open.",
+    "无法打开保存窗口。"
+  ],
+  "Save failed / 保存失败，请重试": [
+    "Save failed. Please try again.",
+    "保存失败，请重试。"
+  ],
+  "User input / 用户输入 · SafeLease character comparison / 字符比较": [
+    "Entered names · Character comparison",
+    "输入姓名 · 字符比较"
+  ],
+  "Android offline edition / 安卓离线版": [
+    "Local image check",
+    "本机图片检查"
+  ],
+  "No live reverse image service ran. Historical replay is labelled separately. / 未进行实时图片查询，历史回放另行标明。": [
+    "No live image query ran. Historical results are identified separately.",
+    "未进行实时图片查询，历史结果另行标明。"
+  ],
+  "imported": [
+    "Imported",
+    "已导入"
+  ],
+  "imported_factual_index": [
+    "Public source index",
+    "公开资料索引"
+  ],
+  "linked_and_summarised": [
+    "Source links and summaries",
+    "来源链接与摘要"
+  ],
+  "outbound_only": [
+    "External links only",
+    "仅提供外部链接"
+  ],
+  "not_imported": [
+    "Not included",
+    "未纳入"
+  ],
+  "excluded": [
+    "Excluded",
+    "未纳入"
+  ],
+  "Original removed under retention policy; hash and version retained.": [
+    "Original removed under retention policy; hash and version retained.",
+    "原片已按保留规则清理，哈希与版本仍保留。"
+  ],
+  "DEMO / 演示 · 01 · Start here / 现场操作起点": [
+    "01 · First lease",
+    "01 · 第一份租约"
+  ],
+  "DEMO / 演示 · 02 · Both confirmed + new supplement / 双方确认与补充": [
+    "02 · Confirmation and supplement",
+    "02 · 确认与补充记录"
+  ],
+  "DEMO / 演示 · 03 · One-sided after 48h / 48小时后仍为单方": [
+    "03 · Confirmation expired",
+    "03 · 确认窗口已结束"
+  ],
+  "DEMO / 演示 · 04 · Dispute and review queue / 异议与人工复核": [
+    "04 · Record under review",
+    "04 · 记录复核中"
+  ],
+  "DEMO / 演示 · 05 · Refused participation / 房东拒绝参与": [
+    "05 · Participation declined",
+    "05 · 已拒绝参与"
+  ],
+  "DEMO / 演示 · 06 · Retention due / 到期清理": [
+    "06 · Expired record",
+    "06 · 到期记录"
+  ],
+  "DEMO / 演示 · 07 · Retention hold / 争议保留": [
+    "07 · Dispute retention",
+    "07 · 争议保留"
+  ],
+  "Official professional registry CSV, registration key uniqueness checked.": [
+    "Official professional registry CSV, registration key uniqueness checked.",
+    "官方中介登记快照，不核实联系人的真实身份。"
+  ],
+  "All source approval rows retained; historical whole-flat rents, not room listings.": [
+    "All source approval rows retained; historical whole-flat rents, not room listings.",
+    "历史整租批准记录，不代表当前可租房源或房间租金。"
+  ],
+  "Public HTML pages allowed by robots; minimal factual fields with source links; no contact extraction.": [
+    "Public HTML pages allowed by robots; minimal factual fields with source links; no contact extraction.",
+    "公开房源资料索引，包含来源链接，信息未经重新确认。"
+  ],
+  "Public discussions and offers, no identifying comments, accusations, phone numbers or images republished.": [
+    "Public discussions and offers, no identifying comments, accusations, phone numbers or images republished.",
+    "公开讨论的来源链接与摘要，不发布个人联系方式。"
+  ],
+  "No Places API key or storage licence. Address search links provided; ratings, reviews and place data not copied.": [
+    "No Places API key or storage licence. Address search links provided; ratings, reviews and place data not copied.",
+    "仅提供地址搜索外链，未复制评分、评论或地点数据库。"
+  ],
+  "Public web search did not yield accessible relevant note pages. No authenticated extraction or invented notes.": [
+    "Public web search did not yield accessible relevant note pages. No authenticated extraction or invented notes.",
+    "未导入相关内容。"
+  ],
+  "Relevant creator pages blocked by robots in the research environment. No videos or inferred transcripts imported.": [
+    "Relevant creator pages blocked by robots in the research environment. No videos or inferred transcripts imported.",
+    "未导入相关内容。"
+  ],
+  "Search did not provide accessible relevant rental posts suitable for import. No private group access or copied profiles.": [
+    "Search did not provide accessible relevant rental posts suitable for import. No private group access or copied profiles.",
+    "未导入相关内容。"
+  ],
+  "Reviewed terms prohibit screen/database scraping; no database import.": [
+    "Reviewed terms prohibit screen/database scraping; no database import.",
+    "未纳入数据库。"
+  ],
+  "ImgOrigin · Results via Google Lens · HISTORICAL TEST REPLAY / 历史测试回放": [
+    "ImgOrigin · Historical image result",
+    "图片来源服务 · 历史查询结果"
+  ],
+  "Observed records and generated exports only. A generated file is not proof of a successful download or rental outcome. No-response participation is not bilateral. Empty cohort rate is null. Test and live cohorts remain separate.": [
+    "Observed records and generated exports only. A generated file is not proof of a successful download or rental outcome. No-response participation is not bilateral. Empty cohort rate is null. Test and live cohorts remain separate.",
+    "统计仅依据保存记录与生成的文件，不证明实际下载或租赁结果。未回应不等于双方确认，未发生的数据保持为空，测试与真实记录分开统计。"
+  ],
+  "lease_created": [
+    "Lease created",
+    "创建租约"
+  ],
+  "screening_created": [
+    "Screening created",
+    "创建房源检查"
+  ],
+  "screening_linked": [
+    "Screening linked",
+    "关联检查记录"
+  ],
+  "movein_version": [
+    "Movein version",
+    "保存入住版本"
+  ],
+  "moveout_version": [
+    "Moveout version",
+    "保存退租版本"
+  ],
+  "decision_confirm": [
+    "Decision confirm",
+    "确认版本"
+  ],
+  "decision_dispute": [
+    "Decision dispute",
+    "提出异议"
+  ],
+  "decision_refuse": [
+    "Decision refuse",
+    "拒绝参与"
+  ],
+  "evidence_exported": [
+    "Evidence exported",
+    "导出证据"
+  ],
+  "check_image": [
+    "Check image",
+    "图片检查"
+  ],
+  "check_cea_self_report": [
+    "Check cea self report",
+    "登记资料观察"
+  ],
+  "check_paynow_helper": [
+    "Check paynow helper",
+    "姓名比较"
+  ],
+  "Room": [
+    "Room",
+    "房间"
+  ],
+  "movein": [
+    "Move-in",
+    "入住"
+  ],
+  "moveout": [
+    "Move-out",
+    "退租"
+  ],
+  "pending": [
+    "Awaiting decisions",
+    "等待决定"
+  ],
+  "bilateral": [
+    "Both confirmed this version",
+    "双方已确认此版本"
+  ],
+  "one_sided_timeout": [
+    "One-sided record; window closed",
+    "单方记录，窗口已结束"
+  ],
+  "disputed": [
+    "Disputed",
+    "存在异议"
+  ],
+  "refused": [
+    "Participation declined",
+    "已拒绝参与"
+  ],
+  "confirm": [
+    "Confirmed",
+    "已确认"
+  ],
+  "dispute": [
+    "Disputed",
+    "提出异议"
+  ],
+  "refuse": [
+    "Declined",
+    "拒绝参与"
+  ],
+  "tenant": [
+    "Tenant",
+    "租客"
+  ],
+  "landlord": [
+    "Landlord",
+    "房东"
+  ],
+  "staff": [
+    "Reviewer",
+    "复核人员"
+  ],
+  "open": [
+    "Open",
+    "待处理"
+  ],
+  "resolved": [
+    "Resolved",
+    "已结案"
+  ],
+  "image": [
+    "Image check",
+    "图片检查"
+  ],
+  "cea_self_report": [
+    "Register observation",
+    "登记资料观察"
+  ],
+  "paynow_helper": [
+    "Visible-name comparison",
+    "可见姓名比较"
+  ],
+  "user_reported_not_verified": [
+    "User-reported observation",
+    "用户自报观察"
+  ],
+  "not_checked": [
+    "Not checked",
+    "未检查"
+  ],
+  "failed": [
+    "Failed",
+    "失败"
+  ],
+  "matches_need_review": [
+    "Matches need review",
+    "匹配结果需复核"
+  ],
+  "no_match_inconclusive": [
+    "No match; inconclusive",
+    "无匹配，无法判断真伪"
+  ],
+  "not_checked:provider_not_configured": [
+    "Not checked; provider unavailable",
+    "未检查，服务未配置"
+  ],
+  "Listing screenshot": [
+    "Listing screenshot",
+    "房源截图"
+  ],
+  "Local user input": [
+    "Local user input",
+    "本机用户输入"
+  ],
+  "listing_context": [
+    "Listing details",
+    "房源资料"
+  ],
+  "User supplied details. No OCR, live image search, identity or ownership verification.": [
+    "User supplied details. No OCR, live image search, identity or ownership verification.",
+    "用户提供资料。未执行文字识别、实时图片查询、身份或产权核验。"
+  ],
+  "letter_exported": [
+    "Letter PDF generated",
+    "已生成信函PDF"
+  ],
+  "check_listing_context": [
+    "Listing details recorded",
+    "已记录房源资料"
+  ]
+}

@@ -1,0 +1,14 @@
+const test=require('node:test'),assert=require('node:assert/strict');const M=require('../app/src/main/assets/model.js');
+test('visible masked letters match after normalisation',()=>assert.equal(M.compareNames(' t**  m** l*** ','Tan Mei Ling').status,'match'));
+test('a visible mismatch stops the comparison',()=>assert.equal(M.compareNames('WoX KaX HoXX','Tan Mei Ling').status,'stop'));
+test('too few visible letters are not checked',()=>assert.equal(M.compareNames('XXX XXX XXXX','Tan Mei Ling').status,'few'));
+test('a company name requires human review',()=>assert.equal(M.compareNames('ABC PTE LTD','ABC PTE LTD').status,'company'));
+test('trailing XX covers between one and three hidden letters',()=>{assert.equal(M.compareNames('TAN MEI LXX','TAN MEI LI').status,'match');assert.equal(M.compareNames('TAN MEI LXX','TAN MEI LING').status,'match');assert.equal(M.compareNames('TAN MEI LXX','TAN MEI LINGG').status,'stop');});
+test('incompatible word counts stop',()=>assert.equal(M.compareNames('TAN MEILING','TAN MEI LING').status,'stop'));
+test('impossible dates are rejected rather than rolled into another month',()=>assert.ok(Number.isNaN(M.dateMs('2026-02-31'))));
+test('refund date crosses a year boundary',()=>assert.equal(M.addDays('2026-12-31',14),'2027-01-14'));
+test('end date must follow start',()=>assert.equal(M.validateLease({address:'A',owner:'B',start:'2026-10-23',end:'2026-10-22',rent:950,deposit:950,refundDays:14}),'dates'));
+test('refund days must be whole',()=>assert.equal(M.validateLease({address:'A',owner:'B',start:'2026-10-23',end:'2027-10-22',rent:950,deposit:950,refundDays:1.5}),'refund'));
+test('48-hour addition window ends one-sided',()=>assert.equal(M.recordStatus({opened:0},2*M.day),'one_sided'));
+test('a confirmed record becomes read-only',()=>assert.equal(M.recordStatus({opened:100,confirmed:'now'},101),'confirmed'));
+test('an inclusive two-year lease has 24 months',()=>assert.equal(M.leaseMonths({start:'2026-01-01',end:'2027-12-31'}),24));

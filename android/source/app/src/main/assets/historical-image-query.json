@@ -1,0 +1,64 @@
+{
+  "at": "2026-10-24T16:28:35.598Z",
+  "origin": "https://safelease-sg.aglowowl512.chatgpt.site",
+  "scope": "Actual public HTTPS, deployed Node/SQLite, actual ImgOrigin; temporary test account, public NASA image, not a rental verification.",
+  "checks": [
+    {
+      "name": "Actual deployed query records provider source, server time, status and limitation",
+      "pass": true
+    },
+    {
+      "name": "Actual response does not certify a genuine listing or ownership",
+      "pass": true
+    },
+    {
+      "name": "Public refresh reads the identical persisted provider result",
+      "pass": true
+    },
+    {
+      "name": "Actual HTML input is rejected by provider and stored as failed",
+      "pass": true,
+      "reason": "provider_http_422"
+    },
+    {
+      "name": "Deployed mobile UI displays the actual result and nonverification limitation",
+      "pass": true
+    }
+  ],
+  "screening_id": "ab98f276-eaf8-4ec7-952d-dfffc7d224f7",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/7/78/The_Blue_Marble.jpg",
+  "actual": {
+    "status": "matches_need_review",
+    "source": "ImgOrigin · Results via Google Lens",
+    "created": 1792859317283,
+    "cache_hit": true,
+    "matches": [
+      {
+        "title": "File:The Blue Marble.jpg",
+        "link": "https://commons.wikimedia.org/wiki/File:The_Blue_Marble.jpg",
+        "match_kind": "exact"
+      },
+      {
+        "title": "File:The Earth seen from Apollo 17.jpg",
+        "link": "https://en.wikipedia.org/wiki/File:The_Earth_seen_from_Apollo_17.jpg",
+        "match_kind": "near_duplicate"
+      },
+      {
+        "title": "Fichye:The Blue Marble.jpg — Wikipedya",
+        "link": "https://ht.wikipedia.org/wiki/Fichye:The_Blue_Marble.jpg",
+        "match_kind": "near_duplicate"
+      },
+      {
+        "title": "MediaWiki REST API.openapi.yaml",
+        "link": "https://github.com/EsyArda/WikiMedia-REST-API-OpenAPI/blob/main/MediaWiki%20REST%20API.openapi.yaml",
+        "match_kind": "exact"
+      }
+    ],
+    "limitation": "Image similarity does not verify a listing, ownership or availability. A missing match is inconclusive."
+  },
+  "invalid_image": {
+    "status": "failed",
+    "reason": "provider_http_422"
+  },
+  "positive_service_acceptance": true
+}
