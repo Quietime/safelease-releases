@@ -1,3 +1,4 @@
+export const WEB_VERSION='1.3.0';
 export const normalize = s => s.trim().toUpperCase().replace(/\s+/g,' ');
 export function compareNames(masked,owner){
  const a=normalize(masked),b=normalize(owner),words=a.split(' '),target=b.split(' ');

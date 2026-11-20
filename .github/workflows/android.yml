@@ -1,0 +1,101 @@
+name: Build Android APK
+
+# Rebuilds the APK from app/<base>.apk plus android/assets, tests the assets in Chromium,
+# and signs it when the release keystore is stored as repository secrets:
+#   SAFELEASE_KEYSTORE_B64     base64 of the .jks file (alias "safelease")
+#   SAFELEASE_STORE_PASSWORD
+#   SAFELEASE_KEY_PASSWORD
+# Without the secrets it still builds and tests, and uploads the unsigned APK.
+# On a branch other than main, a signed build is also committed to app/ (promoted) when
+# android/version.json is newer than the published app/update.json, or when run by hand
+# with "promote" ticked. Merging that branch then publishes it through release.yml.
+on:
+  push:
+    paths:
+      - android/**
+      - tools/verify_release.py
+      - .github/workflows/android.yml
+  workflow_dispatch:
+    inputs:
+      promote:
+        description: Put the signed APK into app/ on this branch (not main) so merging the PR publishes it
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      KEYSTORE_B64: ${{ secrets.SAFELEASE_KEYSTORE_B64 }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build the unsigned APK
+        run: python3 android/build_apk.py build
+
+      - name: Test the assets in Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.49.1
+          npx playwright install --with-deps chromium
+          python3 android/build_apk.py extract dist/android-assets
+          node android/qa/test-android.mjs dist/android-assets dist/android-screens
+
+      - name: Sign with the release key
+        id: sign
+        if: env.KEYSTORE_B64 != ''
+        env:
+          SAFELEASE_STORE_PASSWORD: ${{ secrets.SAFELEASE_STORE_PASSWORD }}
+          SAFELEASE_KEY_PASSWORD: ${{ secrets.SAFELEASE_KEY_PASSWORD }}
+        run: |
+          echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
+          python3 android/build_apk.py sign --keystore "$RUNNER_TEMP/release.jks"
+          rm -f "$RUNNER_TEMP/release.jks"
+
+      - name: Explain the missing signature
+        if: env.KEYSTORE_B64 == ''
+        run: echo "::notice::No signing secrets are set, so only the unsigned APK was built. Sign it with the SafeLease release keystore before publishing."
+
+      - name: Decide whether to promote
+        id: want
+        run: |
+          built=$(jq -r .versionCode android/version.json)
+          published=$(jq -r .versionCode app/update.json)
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            want="${{ inputs.promote }}"
+          elif [ "$built" -gt "$published" ]; then
+            want=true
+          else
+            want=false
+          fi
+          echo "built $built, published $published, promote $want"
+          echo "want=$want" >> "$GITHUB_OUTPUT"
+
+      - name: Upload APK and screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: SafeLease-SG-android
+          path: |
+            dist/SafeLease-SG-*.apk
+            dist/android-screens/
+          if-no-files-found: error
+
+      - name: Promote the signed APK on this branch
+        if: steps.want.outputs.want == 'true' && steps.sign.outcome == 'success' && github.ref != 'refs/heads/main'
+        run: |
+          version=$(jq -r .versionName android/version.json)
+          python3 android/build_apk.py promote "dist/SafeLease-SG-$version.apk"
+          python3 tools/verify_release.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A app index.html
+          git commit -m "Publish signed Android $version"
+          git push

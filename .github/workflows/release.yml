@@ -1,0 +1,86 @@
+name: Publish release
+
+# Publishes the Android release described by app/update.json as a GitHub Release.
+# The Android app checks releases/latest/download/update.json for updates, so the
+# release must carry update.json, the APK and SHA256SUMS.txt and be marked latest.
+on:
+  push:
+    branches: [main]
+    # Only a new APK in app/ publishes a release; web and landing-page edits do not.
+    paths:
+      - app/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-release
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch the APK of the current latest release
+        id: previous
+        run: |
+          prev=$(gh release view --json tagName --jq .tagName 2>/dev/null || true)
+          echo "tag=$prev" >> "$GITHUB_OUTPUT"
+          if [ -n "$prev" ]; then
+            gh release download "$prev" --pattern '*.apk' --dir previous || true
+          fi
+          ls -la previous 2>/dev/null || echo "no previous APK"
+
+      - name: Verify release files
+        id: verify
+        run: |
+          set -o pipefail
+          prev_apk=$(ls previous/*.apk 2>/dev/null | head -n 1 || true)
+          if [ -n "$prev_apk" ]; then
+            python3 tools/verify_release.py --previous "$prev_apk" | tee verify.log
+          else
+            python3 tools/verify_release.py | tee verify.log
+          fi
+          summary=$(tail -n 1 verify.log)
+          echo "tag=$(echo "$summary" | jq -r .tag)" >> "$GITHUB_OUTPUT"
+          echo "apk=$(echo "$summary" | jq -r .apk)" >> "$GITHUB_OUTPUT"
+          echo "web=$(echo "$summary" | jq -r .web)" >> "$GITHUB_OUTPUT"
+
+      - name: Package the web app
+        run: |
+          mkdir -p dist
+          (cd web && zip -qr "../dist/SafeLease-SG-Web-${{ steps.verify.outputs.web }}.zip" .)
+          ls -la dist
+
+      - name: Write release notes
+        run: |
+          jq -r '"\(.releaseNotes.zh)\n\n\(.releaseNotes.en)\n\n请覆盖安装以保留数据。Install over the existing app to keep your records. Android asks for installation confirmation.\n\nAPK SHA-256: \(.sha256)\nPackage: \(.packageName) · versionCode \(.versionCode) · Android 9+ (minSdk \(.minSdk))\n\nWeb app ${{ steps.verify.outputs.web }} is attached as SafeLease-SG-Web-${{ steps.verify.outputs.web }}.zip and served at https://quietime.github.io/safelease-releases/web/"' app/update.json > notes.md
+          cat notes.md
+
+      - name: Create or complete the release
+        run: |
+          tag="${{ steps.verify.outputs.tag }}"
+          apk="app/${{ steps.verify.outputs.apk }}"
+          webzip="dist/SafeLease-SG-Web-${{ steps.verify.outputs.web }}.zip"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag exists; adding any missing assets."
+            have=$(gh release view "$tag" --json assets --jq '.assets[].name')
+            for f in "$apk" app/update.json app/SHA256SUMS.txt "$webzip"; do
+              if ! grep -qxF "$(basename "$f")" <<< "$have"; then
+                gh release upload "$tag" "$f"
+              fi
+            done
+          else
+            gh release create "$tag" "$apk" app/update.json app/SHA256SUMS.txt "$webzip" \
+              --title "SafeLease SG ${tag#v}" --notes-file notes.md --target "$GITHUB_SHA" --latest
+          fi
+
+      - name: Check the in-app update URL
+        run: |
+          sleep 5
+          curl -fsSL "https://github.com/${{ github.repository }}/releases/latest/download/update.json" | jq -e --arg v "${{ steps.verify.outputs.tag }}" '"v" + .versionName == $v'
